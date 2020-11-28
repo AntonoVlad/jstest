@@ -1,58 +1,54 @@
-let names = ["Alex", "Boris", "Kola", "Misha"];
-let tBody = document.querySelector("tbody");
-let filterInput = document.querySelector(".filter");
-let filterNames = []
-let newNameInput = document.querySelector(".new_name")
-let btn = document.querySelector(".btn")
-
-//--------------Заполнили таблицу Именами---------------
-
-for (let i = 0; i < names.length; i++) {
-    let tr = document.createElement("tr");
-    let td = document.createElement("td");
-    td.textContent = names[i];
-    tr.appendChild(td)
-    tBody.appendChild(tr)
-}
-
-//------------При вводе текста в фильтр
-
-filterInput.oninput = function () {
-//------------Обновлятся список отфильтрофаных имен, именами которые совпадают под введеные пользователем
-    filterNames = []
-    for (let i = 0; i < names.length; i++) {
-        if (names[i].toLowerCase().includes(filterInput.value.toLowerCase())) {
-            filterNames.push(names[i])
-        }
+let data = [
+    {
+        title: 'Клатч Ленинград СССР',
+        price: 2300,
+        address: 'Санкт-Петербург, Удельная',
+        creationDate: '2020-11-13T15:15:00.000Z',
+        favorite: false,
+        imageSrc: 'https://picsum.photos/100/200'
+    },
+    {
+        title: 'Клатч, сумочка театральная ретро СССР',
+        price: 450,
+        address: 'Санкт-Петербург, Автово',
+        creationDate: '2020-10-31T15:23:00.000Z',
+        favorite: true,
+        imageSrc: 'https://picsum.photos/199/200'
     }
-//-----------В таблице очищаем строки, рисуем строку для каждого и отфильтрованого имени
-    tBody.textContent = ''
-    for (let i = 0; i < filterNames.length; i++) {
-        let tr = document.createElement("tr");
-        let td = document.createElement("td");
-        td.textContent = filterNames[i]
-        tr.appendChild(td)
-        tBody.appendChild(tr)
-    }
-}
-//-----------Вводим новое имя и при клике на кнопк добавляем его новой строкой в таблицу
-btn.onclick = function () {
-    names.push(newNameInput.value)
-    filterNames = []
-    for (let i = 0; i < names.length; i++) {
-        if (names[i].toLowerCase().includes(filterInput.value.toLowerCase())) {
-            filterNames.push(names[i])
-            console.log(filterNames)
-        }
-    }
+]
 
+for (let i = 0; i < data.length; i++) {
+    let box = document.createElement("div")
+    box.classList.add("box")
+    document.body.appendChild(box)
 
-    tBody.textContent = ''
-    for (let i = 0; i < filterNames.length; i++) {
-        let tr = document.createElement("tr");
-        let td = document.createElement("td");
-        td.textContent = filterNames[i]
-        tr.appendChild(td)
-        tBody.appendChild(tr)
+    let image = document.createElement("img")
+    image.setAttribute("src", data[i].imageSrc)
+    box.appendChild(image)
+
+    let title = document.createElement("h3")
+    box.appendChild(title)
+    title.textContent = data[i].title
+
+    let price = document.createElement("div")
+    box.appendChild(price)
+    price.textContent = data[i].price + "руб"
+
+    let address = document.createElement("div")
+    box.appendChild(address)
+    address.textContent = data[i].address
+
+    let creationDate = document.createElement("div")
+    box.appendChild(creationDate)
+    creationDate.textContent = new Date(data[i].creationDate).toLocaleString()
+
+    let favorite = document.createElement("i")
+    favorite.classList.add("fa")
+    if (data[i].favorite) {
+        favorite.classList.add("fa-heart")
+    } else {
+        favorite.classList.add("fa-heart-o")
     }
+    box.appendChild(favorite)
+
 }
