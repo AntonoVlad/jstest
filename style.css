@@ -1,0 +1,241 @@
+body {
+margin: 0px;
+}
+
+img {
+
+    width: 100px;
+    height: 100px;
+}
+
+h3 {
+    margin: 10px;
+}
+
+
+a {
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+
+    padding-bottom: 30px;
+    height: 70px;
+}
+
+.headerWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.titleHeader {
+    display: flex;
+    align-items: center;
+    background-color: #059A98;
+    font-size: 1.3em;
+}
+
+.btnHeader {
+
+
+}
+
+.btnHeaderCall {
+
+}
+
+.logo {
+
+}
+
+.inputValue {
+    height: 18px;
+}
+
+.box {
+    display: flex;
+
+}
+
+.boxWrapper {
+    position: relative;
+    align-items: center;
+    text-align: center;
+    border: 2px solid black;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+}
+
+.boxWrapper i {
+    position: absolute;
+    right: 70px;
+    top: 5px;
+    color: coral;
+}
+
+.intro {
+
+}
+
+.introWrapper {
+    display: flex;
+    height: 250px;
+}
+
+.infoIntro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.selectIntro {
+    height: 20px;
+}
+
+.optionIntro {
+
+}
+.inputIntro {
+
+}
+
+.btnIntro {
+
+}
+
+.usersIntro {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.userWrapper {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.userWrapper i {
+
+}
+
+.imageUsersIntro {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+}
+
+.userNameWrapper {
+    margin-left: 10px;
+    flex: 1;
+}
+
+.refreshIconIntro {
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.slideIntro {
+    position: relative;
+    flex: 1;
+}
+
+.slideWrapperIntro {
+
+}
+
+.slideWrapperIntro img {
+    width: 100%;
+    height: 100%;
+}
+
+.btnSlideLeftIntro,
+.btnSlideRightIntro {
+    position: absolute;
+    opacity: 23%;
+    height: 250px;
+    cursor: pointer;
+}
+
+.btnSlideRightIntro {
+    right: 0;
+}
+
+.iconSlideLeftIntro,
+.iconSlideRightIntro {
+    display: flex;
+    color: black;
+
+}
+
+.work {
+    display: flex;
+    width: 100%;
+    height: 300px;
+}
+
+.workWrapper {
+
+}
+
+.workImage {
+    width: 100%;
+    height: 300px;
+}
+
+.chartWrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    background-color: seagreen;
+    margin: 20px;
+    height: 300px;
+}
+
+.column {
+    text-align: center;
+    color: white;
+    width: 50px;
+    background-color: coral;
+}
+
+.footer {
+    display: flex;
+    margin-top: 20px;
+    background-color: gold;
+}
+
+
+.footerWrapper {
+    display: flex;
+    justify-content: space-around;
+    height: 200px;
+    width: 100%;
+}
+
+.selectFooter {
+    height: 18px;
+}
+
+.footerMap {
+    border: 2px solid black;
+    width: 150px;
+    height: 150px;
+}
+
+.footerText {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btnFooter {
+
+}
+
