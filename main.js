@@ -120,7 +120,6 @@ inputValue.oninput = function () {
 }
 
 
-
 //----------DATA----------
 
 
@@ -186,10 +185,10 @@ infoIntro.appendChild(selectIntro)
 
 let optionIntroList = [
     {
-      value: ""
+        value: ""
     },
     {
-      value: "Выберите из списка"
+        value: "Выберите из списка"
     },
     {
         value: "Option"
@@ -208,7 +207,7 @@ let optionIntroList = [
     },
 ]
 
-for (let i = 0; i < optionIntroList.length;i++) {
+for (let i = 0; i < optionIntroList.length; i++) {
     let optionIntro = document.createElement("option")
     optionIntro.classList.add("optionIntro")
     optionIntro.textContent = optionIntroList[i].value
@@ -265,7 +264,7 @@ for (let i = 0; i < usersData.length; i++) {
     userWrapper.appendChild(iconUsersIntro)
     if (usersData[i].approved) {
         iconUsersIntro.classList.add("fa-check")
-    }else {
+    } else {
         iconUsersIntro.classList.add("fa-ban")
     }
 
@@ -303,7 +302,7 @@ let imageSlider = [
         image: "https://i.picsum.photos/id/680/200/200.jpg?hmac=jlYrp1rK5RIQZTIaHkTW2llzrRXtuYJLeprOC8i40os"
     },
     {
-        image:"https://i.picsum.photos/id/161/200/200.jpg?hmac=67RAUzlqjfTvEM9tZ3K0ZMB1mAOXZZULGVHKjt1pmPs"
+        image: "https://i.picsum.photos/id/161/200/200.jpg?hmac=67RAUzlqjfTvEM9tZ3K0ZMB1mAOXZZULGVHKjt1pmPs"
     },
     {
         image: "https://i.picsum.photos/id/889/200/200.jpg?hmac=mzo0mKfXHC9qb2dLw47jTrXZmlF9g6c6EuUFOWz0T5U"
@@ -313,17 +312,17 @@ let imageSlider = [
 let imageIndex = 0
 rerenderSlider()
 
-btnSlideLeftIntro.onclick = function() {
-    if (imageIndex > 0){
-    imageIndex--
+btnSlideLeftIntro.onclick = function () {
+    if (imageIndex > 0) {
+        imageIndex--
         rerenderSlider()
     }
 }
 
 
-btnSlideRightIntro.onclick = function() {
-    if (imageIndex < imageSlider.length-1) {
-    imageIndex++
+btnSlideRightIntro.onclick = function () {
+    if (imageIndex < imageSlider.length - 1) {
+        imageIndex++
         rerenderSlider()
     }
 
@@ -409,13 +408,256 @@ chartWrapper.classList.add("chartWrapper")
 document.body.appendChild(chartWrapper)
 
 
-for (let i = 0; i < chartData.length; i++ ) {
+for (let i = 0; i < chartData.length; i++) {
     let column = document.createElement("div")
     column.classList.add("column")
     column.textContent = chartData[i].value + "%"
     column.style.height = `${(chartData[i].value * 300) / 100}px`
     chartWrapper.appendChild(column)
 }
+
+
+//----------TASK----------
+
+let taskSearch = document.createElement("div")
+taskSearch.classList.add("taskSearch")
+document.body.appendChild(taskSearch)
+
+let taskAddSection = document.createElement("div")
+taskAddSection.classList.add("taskAddSection")
+taskSearch.appendChild(taskAddSection)
+
+let newTaskInput = document.createElement("input")
+newTaskInput.classList.add("newTaskInput")
+newTaskInput.placeholder = "New Task..."
+taskAddSection.appendChild(newTaskInput)
+
+let taskBtn = document.createElement("button")
+taskBtn.classList.add("taskBtn")
+taskBtn.textContent = "ADD"
+taskAddSection.appendChild(taskBtn)
+
+let taskWrapper = document.createElement("div")
+taskWrapper.classList.add("taskWrapper")
+taskSearch.appendChild(taskWrapper)
+
+let openTaskSection = document.createElement("div")
+openTaskSection.classList.add("openTaskSection")
+openTaskSection.textContent = "Open"
+taskWrapper.appendChild(openTaskSection)
+
+let taskSelect = document.createElement("select")
+taskSelect.classList.add("taskSelect")
+taskSelect.placeholder = ""
+openTaskSection.appendChild(taskSelect)
+
+
+let optionTaskData = [
+    {
+        value: ""
+    },
+    {
+        value: "Asc"
+    },
+    {
+        value: "Dsc"
+    }
+]
+
+for (let i = 0; i < optionTaskData.length; i++) {
+    let optionTask = document.createElement("option")
+    optionTask.classList.add("optionTask")
+    optionTask.textContent = optionTaskData[i].value
+    taskSelect.appendChild(optionTask)
+}
+
+let doneTaskSection = document.createElement("div")
+doneTaskSection.classList.add("doneTaskSection")
+doneTaskSection.textContent = "Done"
+taskWrapper.appendChild(doneTaskSection)
+
+let doneTaskSelect = document.createElement("select")
+doneTaskSelect.classList.add("doneTaskSelect")
+doneTaskSelect.placeholder = ""
+doneTaskSection.appendChild(doneTaskSelect)
+
+let optionDoneTaskData = [
+    {
+        value: ""
+    },
+    {
+        value: "Asc"
+    },
+    {
+        value: "Dsc"
+    }
+]
+
+for (let i = 0; i < optionDoneTaskData.length; i++) {
+    let optionDoneTask = document.createElement("option")
+    optionDoneTask.classList.add("optionDoneTask")
+    optionDoneTask.textContent = optionDoneTaskData[i].value
+    doneTaskSelect.appendChild(optionDoneTask)
+}
+
+let taskBlock = document.createElement("div")
+taskBlock.classList.add("taskBlock")
+openTaskSection.appendChild(taskBlock)
+
+let taskDoneBlock = document.createElement("div")
+taskDoneBlock.classList.add("taskDoneBlock")
+doneTaskSection.appendChild(taskDoneBlock)
+
+let taskLinkWrapper = document.createElement("div")
+taskLinkWrapper.classList.add("taskLinkWrapper")
+openTaskSection.appendChild(taskLinkWrapper)
+
+let taskClearOpen = document.createElement("a")
+taskClearOpen.classList.add("taskClearOpen")
+taskClearOpen.setAttribute("href", "#")
+taskClearOpen.textContent = "Clear Open"
+openTaskSection.appendChild(taskClearOpen)
+
+let taskClearDone = document.createElement("a")
+taskClearDone.classList.add("taskClearDone")
+taskClearDone.setAttribute("href", "#")
+taskClearDone.textContent = "Clear Done"
+doneTaskSection.appendChild(taskClearDone)
+
+taskBtn.onclick = function () {
+    let task = document.createElement("div")
+    let openTaskText = document.createElement("div")
+    let openTaskData = document.createElement("div")
+    let checkbox = document.createElement("input")
+    checkbox.type = "checkbox"
+    openTaskData.textContent = new Date().toLocaleString()
+    openTaskText.textContent = newTaskInput.value
+    taskBlock.appendChild(task)
+    task.appendChild(checkbox)
+    task.appendChild(openTaskText)
+    task.appendChild(openTaskData)
+    newTaskInput.value = ""
+    checkbox.classList.add("taskCheckbox")
+    task.classList.add("task")
+    openTaskText.classList.add("taskText")
+    openTaskData.classList.add("taskTime")
+
+    checkbox.onclick = function () {
+        if (checkbox.checked) {
+            taskBlock.removeChild(task)
+            taskDoneBlock.appendChild(task)
+        } else {
+            taskDoneBlock.removeChild(task)
+            taskBlock.appendChild(task)
+        }
+    }
+}
+taskClearOpen.addEventListener("click", function (event) {
+    taskBlock.textContent = ""
+    event.preventDefault()
+})
+
+taskClearDone.addEventListener("click", function (event) {
+    taskDoneBlock.textContent = ""
+    event.preventDefault()
+})
+
+taskSelect.addEventListener("change", function () {
+    let tasks = document.querySelectorAll(".taskBlock .task")
+    taskBlock.textContent = ""
+    let isAsc = taskSelect.value !== "Dsc" ? true : false
+    let tasksArray = Array.from(tasks)
+    tasksArray.sort(function (task1, task2) {
+        let task1Text = task1.querySelector(".taskText").textContent
+        let task2Text = task2.querySelector(".taskText").textContent
+        if (task1Text > task2Text) {
+            return isAsc ? 1 : -1
+        } else if (task1Text < task2Text) {
+            return isAsc ? -1 : 1
+        } else {
+            return 0
+        }
+    })
+    for (let i = 0; i < tasksArray.length; i++) {
+        taskBlock.appendChild(tasksArray[i])
+    }
+})
+
+doneTaskSelect.addEventListener("change", function () {
+    let doneTasks = document.querySelectorAll(".taskDoneBlock .task")
+    taskDoneBlock.textContent = ""
+    let isAsc = doneTaskSelect.value !== "Dsc" ? true : false
+    let doneTasksArray = Array.from(doneTasks)
+    doneTasksArray.sort(function (task1, task2) {
+        let task1Text = task1.querySelector(".taskText").textContent
+        let task2Text = task2.querySelector(".taskText").textContent
+        if (task1Text > task2Text) {
+            return isAsc ? 1 : -1
+        } else if (task1Text < task2Text) {
+            return isAsc ? -1 : 1
+        } else {
+            return 0
+        }
+
+    })
+    for (let i = 0; i < doneTasksArray.length; i++) {
+        taskDoneBlock.appendChild(doneTasksArray[i])
+    }
+})
+
+
+//----------MAIN----------
+
+let main = document.createElement("div")
+main.classList.add("main")
+document.body.appendChild(main)
+
+let mainWrapper = document.createElement("div")
+mainWrapper.classList.add("mainWrapper")
+main.appendChild(mainWrapper)
+
+let mainLeftWrapper = document.createElement("div")
+mainLeftWrapper.classList.add("mainLeftWrapper")
+mainWrapper.appendChild(mainLeftWrapper)
+
+let mainBoxLeftWrapper = [
+     {
+         imageMainSrc: "https://items.s1.citilink.ru/1180089_v01_b.jpg",
+         titleMain: "Chevrolet Tahoe, 2018",
+         priceMain: 4100000,
+         addressMain: "Санкт-Петербург, Академическая",
+         creationDateMain: '2020-11-13T15:15:00.000Z',
+         favorite: false,
+     },
+     {},
+     {}
+]
+
+
+for (let i = 0; i < mainBoxLeftWrapper.length; i++) {
+    let mainBoxleft = document.createElement("div")
+    mainBoxleft.textContent = mainBoxLeftWrapper[i]
+    mainBoxleft.classList.add("mainBoxleft")
+    mainLeftWrapper.appendChild(mainBoxleft)
+}
+
+let mainRightWrapper = document.createElement("div")
+mainRightWrapper.classList.add("mainRightWrapper")
+mainWrapper.appendChild(mainRightWrapper)
+
+let mainBoxRightWrapper = [
+    {},
+    {},
+    {}
+]
+
+for (let i = 0; i < mainBoxRightWrapper.length; i++) {
+    let mainBoxRight = document.createElement("div")
+    mainBoxRight.textContent = mainBoxRightWrapper[i].value
+    mainBoxRight.classList.add("mainBoxRight")
+    mainRightWrapper.appendChild(mainBoxRight)
+}
+
 
 //----------FOOTER----------
 
@@ -444,7 +686,7 @@ optionFooterPlaceholder.textContent = "Please select"
 
 let optionFooterData = [
     {
-      value: ""
+        value: ""
     },
     {
         value: "Option"
@@ -469,7 +711,6 @@ for (let i = 0; i < optionFooterData.length; i++) {
     optionFooter.textContent = optionFooterData[i].value
     selectFooter.appendChild(optionFooter)
 }
-
 
 
 let btnFooter = document.createElement("div")
