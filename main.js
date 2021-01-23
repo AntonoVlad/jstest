@@ -621,34 +621,166 @@ mainLeftWrapper.classList.add("mainLeftWrapper")
 mainWrapper.appendChild(mainLeftWrapper)
 
 let mainBoxLeftWrapper = [
-     {
-         imageMainSrc: "https://items.s1.citilink.ru/1180089_v01_b.jpg",
-         titleMain: "Chevrolet Tahoe, 2018",
-         priceMain: 4100000,
-         addressMain: "Санкт-Петербург, Академическая",
-         creationDateMain: '2020-11-13T15:15:00.000Z',
-         favorite: false,
-     },
-     {},
-     {}
+    {
+        imageMainSrc: "https://items.s1.citilink.ru/1180089_v01_b.jpg",
+        estimationMain: false,
+        reviewsMain: true,
+        titleMain: "Автомагнитола PIONEER MVH-S120UB",
+        oldPriceMain: 3990,
+        newPriceMain: 3390,
+        addToCartMain: true,
+        inStockMain: "В наличии в 11 магазинах",
+        deliveryMain: "Доставим в 39 пунктов"
+    },
+    {
+        imageMainSrc: "https://items.s1.citilink.ru/1180618_v01_b.jpg",
+        estimationMain: false,
+        reviewsMain: true,
+        titleMain: "Автомагнитола PIONEER DMH-G221BT",
+        oldPriceMain: 10790,
+        newPriceMain: 9190,
+        addToCartMain: true,
+        inStockMain: "В наличии в 2 магазинах",
+        deliveryMain: "Доставим в 46 пунктов"
+    },
+    {
+        imageMainSrc: "https://items.s1.citilink.ru/480578_v01_b.jpg",
+        estimationMain: true,
+        reviewsMain: true,
+        titleMain: "Автомагнитола DIGMA DCR-350G",
+        oldPriceMain: "",
+        newPriceMain: 1490,
+        addToCartMain: true,
+        inStockMain: "В наличии в 8 магазинах",
+        deliveryMain: "Доставим в 25 пунктов"
+    }
 ]
 
-
 for (let i = 0; i < mainBoxLeftWrapper.length; i++) {
-    let mainBoxleft = document.createElement("div")
-    mainBoxleft.textContent = mainBoxLeftWrapper[i]
-    mainBoxleft.classList.add("mainBoxleft")
-    mainLeftWrapper.appendChild(mainBoxleft)
+    let mainBoxLeft = document.createElement("div")
+    mainBoxLeft.textContent = ""
+    mainBoxLeft.classList.add("mainBoxLeft")
+    mainLeftWrapper.appendChild(mainBoxLeft)
+
+    let mainBoxLeftImg = document.createElement("div")
+    mainBoxLeftImg.classList.add("mainBoxLeftImg")
+    mainBoxLeft.appendChild(mainBoxLeftImg)
+
+    let imgMainSrc = document.createElement("img")
+    imgMainSrc.setAttribute("src", mainBoxLeftWrapper[i].imageMainSrc)
+    mainBoxLeftImg.appendChild(imgMainSrc)
+
+    let mainBoxLeftIcon = document.createElement("div")
+    mainBoxLeftIcon.classList.add("mainBoxLeftIcon")
+    mainBoxLeft.appendChild(mainBoxLeftIcon)
+
+    let estimationMain = document.createElement("i")
+    estimationMain.classList.add("fa")
+    if (mainBoxLeftWrapper[i].estimationMain) {
+        estimationMain.classList.add("fa-star")
+    } else {
+        estimationMain.classList.add("fa-star-o")
+    }
+    mainBoxLeftIcon.appendChild(estimationMain)
+
+    let reviewsMain = document.createElement("i")
+    reviewsMain.classList.add("fa")
+    if (mainBoxLeftWrapper[i].reviewsMain) {
+        reviewsMain.classList.add("fa-comment-o")
+    }
+    mainBoxLeftIcon.appendChild(reviewsMain)
+
+    let mainBoxLeftTitle = document.createElement("div")
+    mainBoxLeftTitle.classList.add("mainBoxLeftTitle")
+    mainBoxLeft.appendChild(mainBoxLeftTitle)
+
+    let titleMain = document.createElement("a")
+    titleMain.setAttribute("href", "#")
+    titleMain.classList.add("titleMain")
+    titleMain.textContent = mainBoxLeftWrapper[i].titleMain
+    mainBoxLeftTitle.appendChild(titleMain)
+
+    let mainPriceLeft = document.createElement("div")
+    mainPriceLeft.classList.add("mainPriceLeft")
+    mainBoxLeft.appendChild(mainPriceLeft)
+
+
+    if (mainBoxLeftWrapper[i].oldPriceMain) {
+        let oldPriceMain = document.createElement("a")
+        oldPriceMain.setAttribute("href", "#")
+        oldPriceMain.classList.add("oldPriceMain")
+        oldPriceMain.textContent = mainBoxLeftWrapper[i].oldPriceMain + "руб"
+        mainPriceLeft.appendChild(oldPriceMain)
+    }
+    let newPriceMain = document.createElement("a")
+    newPriceMain.setAttribute("href", "#")
+    newPriceMain.classList.add("newPriceMain")
+    newPriceMain.textContent = mainBoxLeftWrapper[i].newPriceMain + "руб"
+    mainPriceLeft.appendChild(newPriceMain)
+
+    let addToCartMain = document.createElement("i")
+    addToCartMain.classList.add("fa")
+    if (mainBoxLeftWrapper[i].addToCartMain) {
+        addToCartMain.classList.add("fa-cart-plus")
+    }
+    mainPriceLeft.appendChild(addToCartMain)
+
+    let mainBoxLeftDelivery = document.createElement("div")
+    mainBoxLeftDelivery.classList.add("mainBoxLeftDelivery")
+    mainBoxLeft.appendChild(mainBoxLeftDelivery)
+
+    let inStockMain = document.createElement("a")
+    inStockMain.setAttribute("href", "#")
+    inStockMain.classList.add("inStockMain")
+    inStockMain.textContent = mainBoxLeftWrapper[i].inStockMain
+    mainBoxLeftDelivery.appendChild(inStockMain)
+
+    let deliveryMain = document.createElement("a")
+    deliveryMain.setAttribute("href", "#")
+    deliveryMain.classList.add("deliveryMain")
+    deliveryMain.textContent = mainBoxLeftWrapper[i].deliveryMain
+    mainBoxLeftDelivery.appendChild(deliveryMain)
 }
+
 
 let mainRightWrapper = document.createElement("div")
 mainRightWrapper.classList.add("mainRightWrapper")
 mainWrapper.appendChild(mainRightWrapper)
 
 let mainBoxRightWrapper = [
-    {},
-    {},
-    {}
+    {
+        imageMainSrc: "https://items.s1.citilink.ru/1365583_v01_b.jpg",
+        estimationMain: true,
+        reviewsMain: true,
+        titleMain: "Автомагнитола PIONEER AVH-A320BT",
+        oldPriceMain: 19900,
+        newPriceMain: 17790,
+        addToCartMain: true,
+        inStockMain: "",
+        deliveryMain: "Доставим в 8 пунктов"
+    },
+    {
+        imageMainSrc: "https://items.s1.citilink.ru/1009307_v01_b.jpg",
+        estimationMain: false,
+        reviewsMain: true,
+        titleMain: "Автомагнитола DIGMA DCR-550",
+        oldPriceMain: "",
+        newPriceMain: 2670,
+        addToCartMain: true,
+        inStockMain: "В наличии в 2 магазинах",
+        deliveryMain: "Доставим в 48 пунктов"
+    },
+    {
+        imageMainSrc: "https://items.s1.citilink.ru/1214794_v01_b.jpg",
+        estimationMain: true,
+        reviewsMain: true,
+        titleMain: "Автомагнитола PROLOGY MPV-120",
+        oldPriceMain: 7269,
+        newPriceMain: 6040,
+        addToCartMain: true,
+        inStockMain: "",
+        deliveryMain: "Доставим в 50 пунктов"
+    }
 ]
 
 for (let i = 0; i < mainBoxRightWrapper.length; i++) {
@@ -656,6 +788,85 @@ for (let i = 0; i < mainBoxRightWrapper.length; i++) {
     mainBoxRight.textContent = mainBoxRightWrapper[i].value
     mainBoxRight.classList.add("mainBoxRight")
     mainRightWrapper.appendChild(mainBoxRight)
+
+    let mainBoxRightImg = document.createElement("div")
+    mainBoxRightImg.classList.add("mainBoxRightImg")
+    mainBoxRight.appendChild(mainBoxRightImg)
+
+    let imgMainSrc = document.createElement("img")
+    imgMainSrc.setAttribute("src", mainBoxRightWrapper[i].imageMainSrc)
+    mainBoxRightImg.appendChild(imgMainSrc)
+
+    let mainBoxRightIcon = document.createElement("div")
+    mainBoxRightIcon.classList.add("mainBoxRightIcon")
+    mainBoxRight.appendChild(mainBoxRightIcon)
+
+    let estimationMain = document.createElement("i")
+    estimationMain.classList.add("fa")
+    if (mainBoxRightWrapper[i].estimationMain) {
+        estimationMain.classList.add("fa-star")
+    } else {
+        estimationMain.classList.add("fa-star-o")
+    }
+    mainBoxRightIcon.appendChild(estimationMain)
+
+    let reviewsMain = document.createElement("i")
+    reviewsMain.classList.add("fa")
+    if (mainBoxRightWrapper[i].reviewsMain) {
+        reviewsMain.classList.add("fa-comment-o")
+    }
+    mainBoxRightIcon.appendChild(reviewsMain)
+
+    let mainBoxRightTitle = document.createElement("div")
+    mainBoxRightTitle.classList.add("mainBoxRightTitle")
+    mainBoxRight.appendChild(mainBoxRightTitle)
+
+    let titleMain = document.createElement("a")
+    titleMain.setAttribute("href", "#")
+    titleMain.classList.add("titleMain")
+    titleMain.textContent = mainBoxRightWrapper[i].titleMain
+    mainBoxRightTitle.appendChild(titleMain)
+
+    let mainPriceRight = document.createElement("div")
+    mainPriceRight.classList.add("mainPriceRight")
+    mainBoxRight.appendChild(mainPriceRight)
+
+    if (mainBoxRightWrapper[i].oldPriceMain) {
+        let oldPriceMain = document.createElement("a")
+        oldPriceMain.setAttribute("href", "#")
+        oldPriceMain.classList.add("oldPriceMain")
+        oldPriceMain.textContent = mainBoxRightWrapper[i].oldPriceMain + "руб"
+        mainPriceRight.appendChild(oldPriceMain)
+    }
+
+    let newPriceMain = document.createElement("a")
+    newPriceMain.setAttribute("href", "#")
+    newPriceMain.classList.add("newPriceMain")
+    newPriceMain.textContent = mainBoxRightWrapper[i].newPriceMain + "руб"
+    mainPriceRight.appendChild(newPriceMain)
+
+    let addToCartMain = document.createElement("i")
+    addToCartMain.classList.add("fa")
+    if (mainBoxRightWrapper[i].addToCartMain) {
+        addToCartMain.classList.add("fa-cart-plus")
+    }
+    mainPriceRight.appendChild(addToCartMain)
+
+    let mainBoxRightDelivery = document.createElement("div")
+    mainBoxRightDelivery.classList.add("mainBoxRightDelivery")
+    mainBoxRight.appendChild(mainBoxRightDelivery)
+
+    let inStockMain = document.createElement("a")
+    inStockMain.setAttribute("href", "#")
+    inStockMain.classList.add("inStockMain")
+    inStockMain.textContent = mainBoxRightWrapper[i].inStockMain
+    mainBoxRightDelivery.appendChild(inStockMain)
+
+    let deliveryMain = document.createElement("a")
+    deliveryMain.setAttribute("href", "#")
+    deliveryMain.classList.add("deliveryMain")
+    deliveryMain.textContent = mainBoxRightWrapper[i].deliveryMain
+    mainBoxRightDelivery.appendChild(deliveryMain)
 }
 
 

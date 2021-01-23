@@ -1,5 +1,5 @@
 body {
-margin: 0px;
+    margin: 0px;
 }
 
 img {
@@ -101,6 +101,7 @@ a {
 .optionIntro {
 
 }
+
 .inputIntro {
 
 }
@@ -238,7 +239,7 @@ a {
 }
 
 .taskSelect,
-.doneTaskSelect{
+.doneTaskSelect {
     height: 20px;
     width: 50px;
 }
@@ -266,9 +267,23 @@ a {
     margin: 20px;
 }
 
+.fa-star {
+    color: gold;
+}
+
+.fa-star-o {
+    color: gold;
+}
+
+.fa-comment-o {
+    margin-left: 25px;
+    color: blue;
+}
+
+
 .mainWrapper {
 
-    min-height: 200px;
+    min-height: 350px;
 }
 
 .mainLeftWrapper,
@@ -278,18 +293,107 @@ a {
 }
 
 
-.mainBoxleft,
-.mainBoxRight{
+.mainBoxLeft,
+.mainBoxRight {
+    position: relative;
     display: flex;
+    flex-direction: column;
     border: 1px solid lime;
     box-shadow: 1px 1px 9px 1px yellow;
-    width: 150px;
-    height: 100px;
+    width: 250px;
+    min-height: 250px;
     margin: 10px;
 }
 
-.mainBoxleft:nth-child(1) {
-    border: 2px solid red;
+.mainBoxLeft:hover,
+.mainBoxRight:hover {
+    transform: scale(1.1);
+    background-color: silver;
+}
+
+.mainBoxLeftImg,
+.mainBoxRightImg {
+    text-align: center;
+}
+
+.mainBoxLeftIcon,
+.mainBoxRightIcon {
+    font-size: 20px;
+}
+
+.mainBoxLeftTitle,
+.mainBoxRightTitle {
+
+}
+
+.mainPriceLeft,
+.mainPriceRight {
+position: relative;
+
+}
+
+.mainPriceLeft a,
+.mainPriceRight a {
+    flex-direction: column;
+    padding: 0px 15px;
+    color: black;
+    font-size: 14px;
+}
+
+.mainPriceLeft i,
+.mainPriceRight i {
+
+    display: flex;
+    justify-content: flex-end;
+    font-size: 25px;
+    color: red;
+    width: 30px;
+}
+
+.fa-cart-plus {
+    position: absolute;
+    top: 5px;
+    right: 16px;
+    border: 1px solid black;
+    border-radius: 50px;
+    padding-right: 6px;
+}
+
+.fa-cart-plus:hover {
+    background-color: gold;
+    color: white;
+    transform: scale(0.7);
+    cursor: pointer;
+}
+
+.oldPriceMain {
+    text-decoration: line-through;
+}
+
+.newPriceMain {
+    text-decoration: none;
+}
+
+.titleMain {
+    text-align: center;
+    white-space: pre;
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+    height: 20px;
+
+}
+
+.mainBoxLeftDelivery,
+.mainBoxRightDelivery {
+    position:absolute;
+    bottom: 0;
+    right: 30px;
+}
+
+.mainBoxLeftDelivery a,
+.mainBoxRightDelivery a {
+    text-decoration: none;
 }
 
 .footer {
