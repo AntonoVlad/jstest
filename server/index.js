@@ -32,6 +32,7 @@ app.get('/ads', function (req, res) {
 })
 
 app.post('/ads', function (req, res) {
+    console.log(req.body)
     data.push({
         id: id++,
         ...req.body

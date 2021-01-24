@@ -1,12 +1,11 @@
-const promise = fetch('http://localhost:3000/ads');
+const promise = fetch("http://localhost:3000/ads")
 promise.then(function (resp) {
-
-    const promise2 = resp.json()
+let promise2 = resp.json()
     promise2.then(function (json) {
-        console.log(json)
         renderAds(json)
     })
 })
+
 function renderAds(data) {
     for (let i = 0; i < data.length; i++) {
         let box = document.createElement("div")
