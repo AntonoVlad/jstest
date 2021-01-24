@@ -10,7 +10,9 @@ function renderAds(data) {
     for (let i = 0; i < data.length; i++) {
         let box = document.createElement("div")
         box.classList.add("box")
-        document.body.appendChild(box)
+        let adsWrapper = document.querySelector(".ads-wrapper")
+        adsWrapper.appendChild(box)
+
 
         let image = document.createElement("img")
         image.setAttribute("src", data[i].imageSrc)

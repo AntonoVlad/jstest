@@ -1,5 +1,4 @@
 body {
-    display: flex;
 }
 
 .box {
@@ -10,6 +9,10 @@ body {
     width: 250px;
     height: 250px;
     border: 1px solid black;
+}
+
+.ads-wrapper {
+    display: flex;
 }
 
 img {
