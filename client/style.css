@@ -32,3 +32,8 @@ i {
     cursor: pointer;
     color: coral;
 }
+
+.fa-trash-o {
+    right: 30px;
+    color: red;
+}

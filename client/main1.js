@@ -41,11 +41,23 @@ function renderAds(data) {
         } else {
             favorite.classList.add("fa-heart-o")
         }
+
         let deleteAd = document.createElement("i")
+        deleteAd.addEventListener("click", function () {
+            let promise = fetch(
+                "http://localhost:3000/ads",
+                {
+                    method:"DELETE"
+                }
+            )
+            promise.then(function () {
+                adsWrapper.removeChild(box)
+            })
+        })
         deleteAd.classList.add("fa")
-        if (data[i].deleteAd) {
-            deleteAd.classList.add("fa-trash-o")
-        }
+        deleteAd.classList.add("fa-trash-o")
+
+        box.appendChild(deleteAd)
         box.appendChild(favorite)
         favorite.addEventListener("click", function () {
             let promise = fetch(
