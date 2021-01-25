@@ -47,7 +47,7 @@ function renderAds(data) {
             let promise = fetch(
                 "http://localhost:3000/ads",
                 {
-                    method:"DELETE"
+                    method: "DELETE"
                 }
             )
             promise.then(function () {
@@ -78,6 +78,15 @@ function renderAds(data) {
             })
 
         })
+        let editingAd = document.createElement("i")
+        editingAd.classList.add("editingAd")
+        editingAd.classList.add("fa")
+        editingAd.classList.add("fa-pencil")
+        editingAd.addEventListener("click", function () {
+            location.replace(`/edit_ad/${data[i].id}`)
+            console.log(location)
+        })
+        box.appendChild(editingAd)
     }
 }
 
