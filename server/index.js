@@ -52,5 +52,17 @@ app.put('/ads/makeUnfavorite', function (req, res) {
     res.sendStatus(200)
 })
 
-console.log('hi')
+app.delete('/ads', function (req, res) {
+    const itemIndex = data.findIndex(item => item.id == req.query.id)
+    data.splice(itemIndex, 1)
+    res.sendStatus(200)
+})
+
+app.put('/ads', function (req, res) {
+    const itemIndex = data.findIndex(item => item.id == req.body.id)
+    data.splice(itemIndex, 1, req.body)
+    res.sendStatus(200)
+})
+
+console.log('Server started at http://localhost:3000')
 app.listen(3000)
