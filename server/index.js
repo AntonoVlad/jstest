@@ -40,13 +40,13 @@ app.post('/ads', function (req, res) {
     res.sendStatus(200)
 })
 
-app.post('/ads/makeFavorite', function (req, res) {
+app.put('/ads/makeFavorite', function (req, res) {
     const item = data.find(item => item.id == req.query.id)
     item.favorite = true
     res.sendStatus(200)
 })
 
-app.post('/ads/makeUnfavorite', function (req, res) {
+app.put('/ads/makeUnfavorite', function (req, res) {
     const item = data.find(item => item.id == req.query.id)
     item.favorite = false
     res.sendStatus(200)

@@ -4,3 +4,15 @@ input {
 .input-box > div {
     margin-bottom: 5px;
 }
+
+.success-notification {
+    padding: 5px;
+    background-color: lightgreen;
+    border: 1px solid darkgreen;
+}
+
+.error-notification {
+    padding: 5px;
+    background-color: red;
+    border: 1px solid darkred;
+}

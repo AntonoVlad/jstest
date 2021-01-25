@@ -26,6 +26,24 @@ btn.addEventListener("click", function () {
         }
     )
 
+    let notificationWrapper = document.querySelector(".notification-wrapper")
+
+    promise.then(function () {
+        notificationWrapper.textContent = ""
+        let notification = document.createElement("div")
+        notification.classList.add("success-notification")
+        notification.textContent = "Объявление успешно добавлено"
+        notificationWrapper.appendChild(notification)
+    })
+
+    promise.catch(function () {
+        notificationWrapper.textContent = ""
+        let notification = document.createElement("div")
+        notification.classList.add("error-notification")
+        notification.textContent = "Ошибка при добавлении объявления"
+        notificationWrapper.appendChild(notification)
+    })
 })
+
 
 

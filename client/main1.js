@@ -1,6 +1,6 @@
 const promise = fetch("http://localhost:3000/ads")
 promise.then(function (resp) {
-let promise2 = resp.json()
+    let promise2 = resp.json()
     promise2.then(function (json) {
         renderAds(json)
     })
@@ -41,8 +41,33 @@ function renderAds(data) {
         } else {
             favorite.classList.add("fa-heart-o")
         }
+        let deleteAd = document.createElement("i")
+        deleteAd.classList.add("fa")
+        if (data[i].deleteAd) {
+            deleteAd.classList.add("fa-trash-o")
+        }
         box.appendChild(favorite)
+        favorite.addEventListener("click", function () {
+            let promise = fetch(
+                `http://localhost:3000/ads/${data[i].favorite ? "makeUnfavorite" : "makeFavorite"}?id=${data[i].id}`,
+                {
+                    method: "PUT"
+                }
+            )
+            promise.then(function () {
+                data[i].favorite = !data[i].favorite
+                favorite.classList.remove("fa-heart")
+                favorite.classList.remove("fa-heart-o")
+                if (data[i].favorite) {
+                    favorite.classList.add("fa-heart")
+                } else {
+                    favorite.classList.add("fa-heart-o")
+                }
+            })
+
+        })
     }
 }
+
 
 
