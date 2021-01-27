@@ -1,3 +1,5 @@
+import {getAds, renderAds} from "../helpers/main";
+
 let inputTitle = document.querySelector(".input-title")
 let inputPrice = document.querySelector(".input-price")
 let inputAddress = document.querySelector(".input-address")
@@ -6,11 +8,8 @@ let inputImage = document.querySelector(".input-image")
 let inputIcon = document.querySelector(".input-favorite")
 let btn = document.querySelector(".btn")
 
-
-let promise = fetch("http://localhost:3000/ads")
-promise.then(function (resp) {
-    let promise2 = resp.json()
-    promise2.then(function (json) {
+getAds().then(function (json) {
+    {
         let ad = json.find(function (item) {
             let id = location.pathname.match(new RegExp(/\d/))[0]
 
@@ -23,8 +22,9 @@ promise.then(function (resp) {
         inputDate.value = ad.creationDate
         inputImage.value = ad.imageSrc
         inputIcon.checked = ad.favorite
-    })
+    }
 })
+
 btn.addEventListener("click", function () {
     let ad = {
         id: location.pathname.match(new RegExp(/\d/))[0],
