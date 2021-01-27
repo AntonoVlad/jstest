@@ -27,7 +27,8 @@ const data = [
 app.use(bodyParser.json())
 app.use(cors())
 console.log(__dirname + '../client/index.html')
-app.use('/ads_list', express.static(__dirname + '/../client'))
+app.use('/ads_list', express.static(__dirname + '/../client/list'))
+app.use('/favorite_ads', express.static(__dirname + '/../client/favorite'))
 app.use('/new_ad', express.static(__dirname + '/../client/ad'))
 app.use('/edit_ad/:id', express.static(__dirname + '/../client/edit'))
 

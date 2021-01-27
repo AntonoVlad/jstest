@@ -1,0 +1,44 @@
+body {
+}
+
+.box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+}
+
+.ads-wrapper {
+    display: flex;
+}
+
+img {
+
+    width: 100%;
+    height: 100px;
+}
+
+h3 {
+    font-size: 0.6em;
+}
+
+i {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+    color: coral;
+}
+
+.fa-trash-o {
+    right: 30px;
+    color: red;
+}
+
+.fa-pencil {
+    right: 50px;
+    color: blue;
+}

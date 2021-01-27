@@ -6,8 +6,9 @@ promise.then(function (resp) {
     })
 })
 
+
 function renderAds(data) {
-    for (let i = 0; i < data.length; i++) {
+    data.forEach(function (dataAd) {
         let box = document.createElement("div")
         box.classList.add("box")
         let adsWrapper = document.querySelector(".ads-wrapper")
@@ -15,28 +16,28 @@ function renderAds(data) {
 
 
         let image = document.createElement("img")
-        image.setAttribute("src", data[i].imageSrc)
+        image.setAttribute("src", dataAd.imageSrc)
         box.appendChild(image)
 
         let title = document.createElement("h3")
         box.appendChild(title)
-        title.textContent = data[i].title
+        title.textContent = dataAd.title
 
         let price = document.createElement("div")
         box.appendChild(price)
-        price.textContent = data[i].price + "руб"
+        price.textContent = dataAd.price + "руб"
 
         let address = document.createElement("div")
         box.appendChild(address)
-        address.textContent = data[i].address
+        address.textContent = dataAd.address
 
         let creationDate = document.createElement("div")
         box.appendChild(creationDate)
-        creationDate.textContent = new Date(data[i].creationDate).toLocaleString()
+        creationDate.textContent = new Date(dataAd.creationDate).toLocaleString()
 
         let favorite = document.createElement("i")
         favorite.classList.add("fa")
-        if (data[i].favorite) {
+        if (dataAd.favorite) {
             favorite.classList.add("fa-heart")
         } else {
             favorite.classList.add("fa-heart-o")
@@ -61,16 +62,16 @@ function renderAds(data) {
         box.appendChild(favorite)
         favorite.addEventListener("click", function () {
             let promise = fetch(
-                `http://localhost:3000/ads/${data[i].favorite ? "makeUnfavorite" : "makeFavorite"}?id=${data[i].id}`,
+                `http://localhost:3000/ads/${dataAd.favorite ? "makeUnfavorite" : "makeFavorite"}?id=${dataAd.id}`,
                 {
                     method: "PUT"
                 }
             )
             promise.then(function () {
-                data[i].favorite = !data[i].favorite
+                dataAd.favorite = !dataAd.favorite
                 favorite.classList.remove("fa-heart")
                 favorite.classList.remove("fa-heart-o")
-                if (data[i].favorite) {
+                if (dataAd.favorite) {
                     favorite.classList.add("fa-heart")
                 } else {
                     favorite.classList.add("fa-heart-o")
@@ -83,11 +84,12 @@ function renderAds(data) {
         editingAd.classList.add("fa")
         editingAd.classList.add("fa-pencil")
         editingAd.addEventListener("click", function () {
-            location.replace(`/edit_ad/${data[i].id}`)
+            location.replace(`/edit_ad/${dataAd.id}`)
             console.log(location)
         })
         box.appendChild(editingAd)
-    }
+
+    })
 }
 
 

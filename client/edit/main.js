@@ -46,3 +46,8 @@ let promis = fetch(
     }
 )
 })
+
+let arr = [1, 2]
+let item = arr.find(function (number) {
+
+})
