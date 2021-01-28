@@ -36,13 +36,8 @@ export function renderAds(data) {
 
         let deleteAd = document.createElement("i")
         deleteAd.addEventListener("click", function () {
-            let promise = fetch(
-                "http://localhost:3000/ads",
-                {
-                    method: "DELETE"
-                }
-            )
-            promise.then(function () {
+
+            deleteAdFromServer().then(function () {
                 adsWrapper.removeChild(box)
             })
         })
@@ -52,13 +47,8 @@ export function renderAds(data) {
         box.appendChild(deleteAd)
         box.appendChild(favorite)
         favorite.addEventListener("click", function () {
-            let promise = fetch(
-                `http://localhost:3000/ads/${dataAd.favorite ? "makeUnfavorite" : "makeFavorite"}?id=${dataAd.id}`,
-                {
-                    method: "PUT"
-                }
-            )
-            promise.then(function () {
+
+            favoriteAdFromServer(dataAd).then(function () {
                 dataAd.favorite = !dataAd.favorite
                 favorite.classList.remove("fa-heart")
                 favorite.classList.remove("fa-heart-o")
@@ -89,9 +79,36 @@ export function getAds() {
         promise.then(function (resp) {
             let promise2 = resp.json()
             promise2.then(function (json) {
-            resolve(json)
+                resolve(json)
             })
         })
     })
+}
 
+export function deleteAdFromServer() {
+    return new Promise(function (resolve) {
+        let promise = fetch(
+            "http://localhost:3000/ads",
+            {
+                method: "DELETE"
+            }
+        )
+        promise.then(function () {
+            resolve()
+        })
+    })
+}
+
+export function favoriteAdFromServer(dataAd) {
+    return new Promise(function (resolve) {
+        let promise = fetch(
+            `http://localhost:3000/ads/${dataAd.favorite ? "makeUnfavorite" : "makeFavorite"}?id=${dataAd.id}`,
+            {
+                method: "PUT"
+            }
+        )
+        promise.then(function () {
+            resolve()
+        })
+    })
 }
