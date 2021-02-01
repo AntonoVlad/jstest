@@ -1,4 +1,4 @@
-import {getAds, renderAds} from "../helpers/main";
+import {getAds} from "/helpers/main.js";
 
 let inputTitle = document.querySelector(".input-title")
 let inputPrice = document.querySelector(".input-price")

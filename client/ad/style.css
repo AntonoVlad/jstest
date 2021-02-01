@@ -1,6 +1,23 @@
 input {
 
 }
+
+.ads {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.ads a {
+    text-decoration: none;
+}
+
+.ads a:hover {
+    color: red;
+    transform: scale(1.2);
+    border: 2px dashed black ;
+}
+
 .input-box > div {
     margin-bottom: 5px;
 }

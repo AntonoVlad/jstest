@@ -1,0 +1,24 @@
+.notification-element {
+    border: 1px solid green;
+    padding: 15px;
+    background-color: white;
+    margin-top: 5px;
+}
+
+.notification-element-wrapper {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.success.notification-element {
+    background-color: green;
+}
+
+.error.notification-element {
+    background-color: red;
+}
+
+.warn.notification-element {
+    background-color: yellow;
+}

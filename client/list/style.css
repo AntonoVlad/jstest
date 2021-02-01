@@ -11,8 +11,67 @@ body {
     border: 1px solid black;
 }
 
+.ads {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.ads a {
+    text-decoration: none;
+}
+
+.ads a:hover {
+    color: red;
+    transform: scale(1.2);
+    border: 2px dashed black ;
+}
+
 .ads-wrapper {
     display: flex;
+}
+
+.rating-area {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 250px;
+    margin: 10px;
+}
+.rating-area:not(:checked) > input {
+    display: none;
+}
+.rating-area:not(:checked) > label {
+    float: right;
+    width: 42px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 22px;
+    color: lightgrey;
+    text-shadow: 1px 1px #bbb;
+}
+.rating-area:not(:checked) > label:before {
+    content: '★';
+}
+.rating-area > input:checked ~ label {
+    color: gold;
+    text-shadow: 1px 1px #c60;
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+    color: gold;
+    text-shadow: 1px 1px goldenrod;
+}
+.rate-area > label:active {
+    position: relative;
 }
 
 img {

@@ -34,11 +34,29 @@ export function renderAds(data) {
             favorite.classList.add("fa-heart-o")
         }
 
+        let ratings = [
+            1, 2, 3, 4, 5
+        ]
+        let ratingArea = document.createElement("div")
+        ratingArea.classList.add("rating-area")
+        ratings.forEach(function (rating) {
+            let ratingInput = document.createElement("input")
+            ratingInput.value = rating
+            ratingArea.appendChild(ratingInput)
+            let ratingLabel = document.createElement("label")
+            ratingArea.appendChild(ratingLabel)
+        })
+
+        box.appendChild(ratingArea)
+
         let deleteAd = document.createElement("i")
         deleteAd.addEventListener("click", function () {
 
             deleteAdFromServer().then(function () {
+                showNotification("Объявление успешно удалено")
                 adsWrapper.removeChild(box)
+            }).catch(function () {
+                showNotification("Ошибка", "error")
             })
         })
         deleteAd.classList.add("fa")
@@ -54,9 +72,13 @@ export function renderAds(data) {
                 favorite.classList.remove("fa-heart-o")
                 if (dataAd.favorite) {
                     favorite.classList.add("fa-heart")
+                    showNotification("Объявление успешно добавлено в избранное")
                 } else {
                     favorite.classList.add("fa-heart-o")
+                    showNotification("Объявление успешно удалено из избранного")
                 }
+            }).catch(function () {
+                showNotification("Ошибка", "error")
             })
 
         })
@@ -66,10 +88,8 @@ export function renderAds(data) {
         editingAd.classList.add("fa-pencil")
         editingAd.addEventListener("click", function () {
             location.replace(`/edit_ad/${dataAd.id}`)
-            console.log(location)
         })
         box.appendChild(editingAd)
-
     })
 }
 
@@ -77,6 +97,7 @@ export function getAds() {
     return new Promise(function (resolve) {
         const promise = fetch("http://localhost:3000/ads")
         promise.then(function (resp) {
+            console.log(resp)
             let promise2 = resp.json()
             promise2.then(function (json) {
                 resolve(json)
@@ -86,13 +107,16 @@ export function getAds() {
 }
 
 export function deleteAdFromServer() {
-    return new Promise(function (resolve) {
+    return new Promise(function (resolve, reject) {
         let promise = fetch(
             "http://localhost:3000/ads",
             {
                 method: "DELETE"
             }
         )
+        promise.catch(function () {
+            reject()
+        })
         promise.then(function () {
             resolve()
         })
@@ -100,15 +124,44 @@ export function deleteAdFromServer() {
 }
 
 export function favoriteAdFromServer(dataAd) {
-    return new Promise(function (resolve) {
+    return new Promise(function (resolve, reject) {
         let promise = fetch(
             `http://localhost:3000/ads/${dataAd.favorite ? "makeUnfavorite" : "makeFavorite"}?id=${dataAd.id}`,
             {
                 method: "PUT"
             }
         )
+        promise.catch(function () {
+            reject()
+        })
         promise.then(function () {
             resolve()
         })
     })
 }
+
+function showNotification(message, type = "success") {
+    let notificationElement = document.createElement("div")
+    let notificationElementWrapper = document.querySelector(".notification-element-wrapper")
+    notificationElement.classList.add("notification-element")
+    if (type == "success") {
+        notificationElement.classList.add("success")
+    }
+    if (type == "error") {
+        notificationElement.classList.add("error")
+    }
+    if (type == "warn") {
+        notificationElement.classList.add("warn")
+    }
+    notificationElement.textContent = message
+    notificationElementWrapper.appendChild(notificationElement)
+
+    setTimeout(function () {
+            notificationElementWrapper.removeChild(notificationElement)
+        },
+        3000
+    )
+}
+
+
+
